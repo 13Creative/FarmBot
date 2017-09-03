@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using Farm_Bot.Dialogs;
 
 namespace Farm_Bot
 {
@@ -18,7 +19,7 @@ namespace Farm_Bot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                await Conversation.SendAsync(activity, () => new RootDialog());
             }
             else
             {
