@@ -6,11 +6,8 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Farm_Bot.Dialogs;
 
-namespace Farm_Bot
-{
-    //, domain: "https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/6b7b0ad8-5b3b-425a-bacc-08c79228c0f1?subscription-key=3a452adbffff45209376addda3e04c1d", verbose:true
-    //[LuisModel("6b7b0ad8-5b3b-425a-bacc-08c79228c0f1", "3a452adbffff45209376addda3e04c1d")]
-    ///luis/v2.0/apps/6b7b0ad8-5b3b-425a-bacc-08c79228c0f1
+namespace Farm_Bot {
+
     [LuisModel("2537a8b7-17a5-4b2d-8d64-c0f5cfc976fa", "c7c14f2df06a42719fd4f9b748fd1963")]
     [Serializable]
     public class RootDialogALuis : LuisDialog<object> {
