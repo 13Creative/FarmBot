@@ -113,7 +113,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Dialogs\AgeDialog.cs" />
+    <Compile Include="Dialogs\EmailDialog.cs" />
     <Compile Include="Dialogs\NameDialog.cs" />
     <Compile Include="Dialogs\RootDialogALuis.cs" />
     <Compile Include="Global.asax.cs">

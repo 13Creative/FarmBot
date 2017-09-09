@@ -6,17 +6,16 @@
     using Microsoft.Bot.Connector;
 
     [Serializable]
-    public class AgeDialog : IDialog<string>
+    public class EmailDialog : IDialog<string>
     {
-        private string name;
+        private string email;
         private int attempts = 3;
 
-        public AgeDialog(string name) {
-            this.name = name;
+        public EmailDialog() {
         }
 
         public async Task StartAsync(IDialogContext context) {
-            await context.PostAsync($"{this.name}, what is your age?");
+            await context.PostAsync($"Please Tell Me The Email That you would like to register on our mailing list.");
 
             context.Wait(this.MessageRecievedAsync);
         }
@@ -24,19 +23,19 @@
         private async Task MessageRecievedAsync(IDialogContext context, IAwaitable<IMessageActivity> result) {
             var message = await result;
 
-            int age;
-            if (Int32.TryParse(message.Text, out age) && (age > 0)){
-                context.Done(Convert.ToString(age));
+            string email = message.Text;
+            if (email.Contains("@")){
+                context.Done(email);
             }
             else {
                 --attempts;
                 if (attempts > 0){
-                    await context.PostAsync("I'm sorry, I didnt understand your reply. What is your age (e.g. '15')?");
+                    await context.PostAsync("I'm sorry, Please Check That you Typed in A Valid Email Address.");
 
                     context.Wait(this.MessageRecievedAsync);
                 }
                 else {
-                    context.Fail(new TooManyAttemptsException("Message was not a valid age."));
+                    context.Fail(new TooManyAttemptsException("Message was not a valid email."));
                 }
             }
         }
