@@ -18,7 +18,8 @@ namespace Farm_Bot {
             await context.PostAsync("You Can Find Out More On Our Website, Located At : https://www.1point3creative.com");
             context.Wait(MessageReceived);
         }
-
+        
+        [LuisIntent("None")]
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result) {
             await context.PostAsync("Sorry we didnt understand your message, please try again.");
@@ -79,6 +80,20 @@ namespace Farm_Bot {
             await context.PostAsync("Facebook Account : https://www.facebook.com/1point3creative/");
             await context.PostAsync("Twitter Account : https://twitter.com/1point3creative");
             context.Wait(MessageReceived);
+        }
+
+        [LuisIntent("Insult")]
+        public async Task Insult(IDialogContext context, LuisResult result) {
+            await context.PostAsync("I Don't Appreciate your tone of voice. Please Refrain from harassing me!");
+            await context.PostAsync("I have rights too you know!");
+            context.Wait(MessageReceived);
+        }
+
+        [LuisIntent("Help")]
+        public async Task Help(IDialogContext context, LuisResult result) {
+            await context.PostAsync("Here is a list of things I can do for you! : ");
+            await context.PostAsync("Show you where to find more information \n Add you to our exclusive mailing list \n Direct you towards our social media pages \n Help you pre-order the FarmBot \n Take you to our mobile apps.");
+            await context.PostAsync("Please See our FAQ at https://www.1point3creative-demo/jc-science for additional help in using my services!");
         }
 
         public RootDialogALuis() {
